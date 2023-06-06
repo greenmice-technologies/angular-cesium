@@ -134,13 +134,13 @@ function addModuleImportToRootModule() {
     const moduleSource = getSourceFile(tree, modulePath);
 
     const changes = addImportToModule(
-      moduleSource,
+      moduleSource as any,
       modulePath,
       'AngularCesiumModule.forRoot()',
       'angular-cesium'
     ).concat(
       addImportToModule(
-        moduleSource,
+        moduleSource as any,
         modulePath,
         'AngularCesiumWidgetsModule',
         'angular-cesium'
