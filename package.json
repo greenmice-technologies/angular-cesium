@@ -1,9 +1,9 @@
 {
-  "name": "angular-cesium",
-  "version": "0.0.74",
+  "name": "@greenmice/ngx-cesium",
+  "version": "11.0.1",
   "license": "MIT",
   "description": "Angular library for working with Cesium.",
-  "repository": "https://github.com/articodeltd/angular-cesium",
+  "repository": "https://github.com/greenmice-technologies/angular-cesium",
   "keywords": [
     "Angular",
     "Cesium",
@@ -30,7 +30,7 @@
     "docs:compile": "rimraf docs && compodoc -p projects/angular-cesium/src/lib/tsconfig.compodoc.json --theme stripe -d docs -n \"Angular Cesium\"",
     "docs:push": "npm run docs:compile && npm run gh-pages && rimraf docs"
   },
-  "private": true,
+  "private": false,
   "dependencies": {
     "@angular/animations": "^11.2.9",
     "@angular/cdk": "^11.2.8",
@@ -42,7 +42,7 @@
     "@angular/platform-browser": "^11.2.9",
     "@angular/platform-browser-dynamic": "^11.2.9",
     "@angular/router": "^11.2.9",
-    "@fortawesome/angular-fontawesome": "^0.7.0",
+    "@fortawesome/angular-fontawesome": "^0.8.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.27",
     "@fortawesome/free-solid-svg-icons": "^5.11.2",
     "angular2parse": "^1.0.11",

@@ -68,7 +68,7 @@
 
 ## 0.63
 ### Features
-* Refactor demo project and create: https://github.com/articodeltd/angular-cesium-demo
+* Refactor demo project and create: https://github.com/greenmice-technologies/angular-cesium-demo
 
 ### Fixes
 * Fix `ng add angular-cesium`
