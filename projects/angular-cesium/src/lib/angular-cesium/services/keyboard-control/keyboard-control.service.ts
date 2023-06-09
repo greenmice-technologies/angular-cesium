@@ -1,4 +1,4 @@
-import { isNumber } from 'util';
+
 import { Inject, Injectable, NgZone } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { KeyboardAction } from '../../models/ac-keyboard-action.enum';
@@ -175,8 +175,8 @@ export class KeyboardControlService {
    * @param outsideOfAngularZone - if key down events will run outside of angular zone.
    */
   setKeyboardControls(definitions: KeyboardControlDefinition,
-                      keyMappingFn?: (keyEvent: KeyboardEvent) => string,
-                      outsideOfAngularZone = false) {
+    keyMappingFn?: (keyEvent: KeyboardEvent) => string,
+    outsideOfAngularZone = false) {
     if (!definitions) {
       return this.removeKeyboardControls();
     }
@@ -314,7 +314,7 @@ export class KeyboardControlService {
 
     const params = this.getParams(execution.params, keyboardEvent);
 
-    if (isNumber(execution.action)) {
+    if (!isNaN(execution.action as any)) {
       const predefinedAction = PREDEFINED_KEYBOARD_ACTIONS[execution.action as number];
 
       if (predefinedAction) {
