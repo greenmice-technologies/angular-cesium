@@ -1,5 +1,5 @@
 {
-  "name": "angular-cesium",
+  "name": "@greenmice/ngx-cesium",
   "version": "12.0.1",
   "license": "MIT",
   "description": "Angular library for working with Cesium.",
@@ -30,7 +30,7 @@
     "docs:compile": "rimraf docs && compodoc -p projects/angular-cesium/src/lib/tsconfig.compodoc.json --theme stripe -d docs -n \"Angular Cesium\"",
     "docs:push": "npm run docs:compile && npm run gh-pages && rimraf docs"
   },
-  "private": true,
+  "private": false,
   "dependencies": {
     "@angular/animations": "^12.2.17",
     "@angular/cdk": "^12.2.13",
