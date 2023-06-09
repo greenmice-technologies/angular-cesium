@@ -1,9 +1,9 @@
 {
-  "name": "angular-cesium",
-  "version": "0.0.74",
+  "name": "@greenmice/ngx-cesium",
+  "version": "12.0.0",
   "license": "MIT",
   "description": "Angular library for working with Cesium.",
-  "repository": "https://github.com/articodeltd/angular-cesium",
+  "repository": "https://github.com/greenmice-technologies/angular-cesium",
   "keywords": [
     "Angular",
     "Cesium",
