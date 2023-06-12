@@ -1,6 +1,6 @@
 {
   "name": "@greenmice/ngx-cesium",
-  "version": "14.0.0",
+  "version": "15.0.0",
   "license": "MIT",
   "description": "Angular library for working with Cesium.",
   "repository": "https://github.com/greenmice-technologies/angular-cesium",
@@ -11,8 +11,8 @@
     "Angular2 Cesium"
   ],
   "peerDependencies": {
-    "@angular/common": "^14.0.0",
-    "@angular/core": "^14.0.0",
+    "@angular/common": "^15.0.0",
+    "@angular/core": "^15.0.0",
     "cesium": ">= 1.48.0"
   },
   "dependencies": {
