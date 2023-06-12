@@ -1,6 +1,6 @@
 {
   "name": "@greenmice/ngx-cesium",
-  "version": "13.0.0",
+  "version": "13.1.0",
   "license": "MIT",
   "description": "Angular library for working with Cesium.",
   "repository": "https://github.com/greenmice-technologies/angular-cesium",
