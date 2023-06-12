@@ -37,7 +37,9 @@
             ],
             "allowedCommonJsDependencies": [
               "geodesy",
-              "util"
+              "util",
+              "json-string-mapper",
+              "primitive-primitives"
             ],
             "vendorChunk": true,
             "extractLicenses": false,
@@ -263,6 +265,5 @@
         }
       }
     }
-  },
-  "defaultProject": "angular-cesium-demo"
+  }
 }
