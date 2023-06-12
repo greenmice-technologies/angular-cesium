@@ -4819,10 +4819,10 @@ gensync@^1.0.0-beta.2:
   resolved "https://registry.yarnpkg.com/gensync/-/gensync-1.0.0-beta.2.tgz#32a6ee76c3d7f52d46b2b1ae5d93fea8580a25e0"
   integrity sha512-3hN7NaskYvMDLQY55gnW3NQ+mesEAepTqlg+VEbj7zzqEMBVNhzcGYYeqFo/TlYz6eQiFcp1HcsCZO+nGgS8zg==
 
-geodesy@2.4.0:
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/geodesy/-/geodesy-2.4.0.tgz#6a0ad3dab3c1f95d8430aaa04fbe620b639c3e48"
-  integrity sha512-tHjQ1sXq8UAIEg1V0Pa6mznUxGU0R+3H5PIF6NULr0yPCAVLKqJro93Bbr19jSE18BMfyjN4osWDI4sm92m0kw==
+geodesy@^1.1.1:
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/geodesy/-/geodesy-1.1.3.tgz#a0cbd5db5c0cf8ac045e749f754f61b450382de9"
+  integrity sha512-H/0XSd1KjKZGZ2YGZcOYzRyY/foYAawwTEumNSo+YUwf+u5d4CfvBRg2i2Qimrx9yUEjWR8hLvMnhghuVFN0Zg==
 
 get-assigned-identifiers@^1.1.0:
   version "1.2.0"
