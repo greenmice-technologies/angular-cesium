@@ -4,8 +4,7 @@
     "geodesy",
     "@auscope/angular2parse",
     "json-string-mapper",
-    "primitive-primitives",
-    "lodash.get"
+    "primitive-primitives"
   ],
   "dest": "../../dist/angular-cesium",
   "lib": {

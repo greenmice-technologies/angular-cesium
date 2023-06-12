@@ -9,7 +9,7 @@
     "experimentalDecorators": true,
     "lib": [
       "es5",
-      "es2015",
+      "es2020",
       "dom"
     ],
     "sourceMap": true,
