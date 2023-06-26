@@ -191,7 +191,7 @@
 ### Breaking Changes
 * From now Angular Pipes need to be set in `AngularCesiumModule.forRoot(ustomPipes: myCustomPipes)`.
 angular-cesium won't be aware of pipes that wont be defined as `customPipes`.
-There for any user Pipes need to be declared when initializing angular cesium.
+There for any user Pipes need to be declared when initializing ngx-cesium.
 * For upgrade to 0.53 from older versions remove `rxjs-compat` dependency and refactor to rxjs 6 new import paths.  
 
 ## 0.0.52

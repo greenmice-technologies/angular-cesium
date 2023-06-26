@@ -69,7 +69,7 @@ export const DEFAULT_ELLIPSE_OPTIONS: EllipseEditOptions = {
  * + To stop editing call `dispose()` from the `EllipseEditorObservable` you get back from `create()` \ `edit()`.
  *
  * **Labels over edited shapes**
- * Angular Cesium allows you to draw labels over a shape that is being edited with one of the editors.
+ * ngx-cesium allows you to draw labels over a shape that is being edited with one of the editors.
  * To add label drawing logic to your editor use the function `setLabelsRenderFn()` that is defined on the
  * `EllipseEditorObservable` that is returned from calling `create()` \ `edit()` of one of the editor services.
  * `setLabelsRenderFn()` - receives a callback that is called every time the shape is redrawn

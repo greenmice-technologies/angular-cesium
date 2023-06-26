@@ -1,5 +1,5 @@
 <!--
-  Thanks for filing a pull request on Angular Cesium!
+  Thanks for filing a pull request on ngx-cesium!
 -->
 
 ### Checklist:

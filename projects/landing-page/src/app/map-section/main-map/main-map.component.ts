@@ -14,11 +14,16 @@ export class MainMapComponent implements AfterViewInit {
   sceneMode2D = SceneMode.PERFORMANCE_SCENE2D;
   Cesium = Cesium;
 
-  constructor(private viewerConf: ViewerConfiguration, private mapsManagerService: MapsManagerService) {
+  constructor(
+    private viewerConf: ViewerConfiguration,
+    private mapsManagerService: MapsManagerService
+  ) {
+
+    Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiIxYTZiOWM5Ni0zZTg4LTRhOTMtYTViMS1lMzlmNjVjMTYzOTgiLCJpZCI6MTYyMjYsInNjb3BlcyI6WyJhc3IiLCJnYyJdLCJpYXQiOjE1Njk5NDM0Nzl9.d4oWUt0tN-MltNraqn6lUBEYdMVxxRpkHGXF3zIvKmU';
     viewerConf.viewerOptions = {
       selectionIndicator: false,
       infoBox: false,
-      baseLayerPicker: false,
+      baseLayerPicker: true,
       homeButton: false,
       navigationHelpButton: false,
       navigationInstructionsInitiallyVisible: false,

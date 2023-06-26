@@ -28,7 +28,7 @@ Check out our [Docs](https://docs.angular-cesium.com) and our blog post [Intro t
     $ open http://localhost:4200
     ```
 + More demos:
-  + [Angular Cesium Demo](https://github.com/greenmice-technologies/angular-cesium-demo)
+  + [ngx-cesium Demo](https://github.com/greenmice-technologies/angular-cesium-demo)
   + [GeoStrike](http://geo-strike.com) - [Repository](https://github.com/Webiks/GeoStrike)
   + [GLO](https://glo.now.sh) - [Repository](https://github.com/sofwerx/glo-demo)
   + [Safehouse](https://github.com/sofwerx/safehouse)
@@ -118,7 +118,7 @@ export class SomeComponent{
 For further details check the [map events guide](https://docs.angular-cesium.com/guides/map-events)
 
 ### Map layers
-With angular cesium you can define your map provider in a declarative way using `ac-map-layer-provider` :
+With ngx-cesium you can define your map provider in a declarative way using `ac-map-layer-provider` :
 ```html
     <ac-map-layer-provider *ngIf="appSettingsService.showMapLayer" [provider]="MapLayerProviderOptions.ArcGisMapServer"
                            [options]="{
@@ -141,7 +141,7 @@ With angular cesium you can define your map provider in a declarative way using 
    </ac-3d-tile-layer>
 ```
 ### Multiple maps support
-Angular Cesium supports integration of multiple maps, for more details [here](https://docs.angular-cesium.com/guides/multiple-maps-sync)
+ngx-cesium supports integration of multiple maps, for more details [here](https://docs.angular-cesium.com/guides/multiple-maps-sync)
 
 ### MapLayerProviderOptions Updates
 `MapboxStyleImageryProvider` has been added to `MapLayerProviderOptions` for mapBox styles support. 
@@ -187,7 +187,7 @@ Util service that wraps cesium camera, exposes the scene's camera and screenSpac
 
 
 ### MapsManagerService
-Angular Cesium extends cesium api and expose additional features, but if you want to use pure cesium api you can use [MapsManagerService](https://articodeltd.github.io/angular-cesium/injectables/MapsManagerService.html) to receive cesium [viewer](https://cesiumjs.org/Cesium/Build/Documentation/Viewer.html) or any other util service that was created by `ac-map`.
+ngx-cesium extends cesium api and expose additional features, but if you want to use pure cesium api you can use [MapsManagerService](https://articodeltd.github.io/angular-cesium/injectables/MapsManagerService.html) to receive cesium [viewer](https://cesiumjs.org/Cesium/Build/Documentation/Viewer.html) or any other util service that was created by `ac-map`.
 ```typescript
 class MyComp {
 constructor(mapsManagerService: MapsManagerService)
@@ -226,7 +226,7 @@ create any custom angular component and anchor it to a map position, [context me
 [Mit License](https://opensource.org/licenses/MIT)
 
 ## Support
-Angular Cesium is an open source project, feel free to open issues,ask questions and open PRs.
+ngx-cesium is an open source project, feel free to open issues,ask questions and open PRs.
 For additional support options contact us: [contact@articode.co](mailto:\\contact@articode.co).
 
 Articode is a software company that specializes in GIS solutions and is the creator and the maintainer of angular-cesium.

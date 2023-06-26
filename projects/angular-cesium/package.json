@@ -7,7 +7,7 @@
   "keywords": [
     "Angular",
     "Cesium",
-    "Angular Cesium",
+    "ngx-cesium",
     "Angular2 Cesium"
   ],
   "peerDependencies": {

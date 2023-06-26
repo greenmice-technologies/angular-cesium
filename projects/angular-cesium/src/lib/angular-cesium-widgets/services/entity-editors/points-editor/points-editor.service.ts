@@ -46,7 +46,7 @@ export const DEFAULT_POINT_OPTIONS: PointEditOptions = {
  * + To stop editing call `dsipose()` from the `PointEditorObservable` you get back from `create()` \ `edit()`.
  *
  * **Labels over editted shapes**
- * Angular Cesium allows you to draw labels over a shape that is being edited with one of the editors.
+ * ngx-cesium allows you to draw labels over a shape that is being edited with one of the editors.
  * To add label drawing logic to your editor use the function `setLabelsRenderFn()` that is defined on the
  * `PointEditorObservable` that is returned from calling `create()` \ `edit()` of one of the editor services.
  * `setLabelsRenderFn()` - receives a callback that is called every time the shape is redrawn

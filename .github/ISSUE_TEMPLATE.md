@@ -1,5 +1,5 @@
 <!--
-  Thanks for filing an issue on Angular Cesium!
+  Thanks for filing an issue on ngx-cesium!
 
   Please make sure that you include the following information to ensure that your issue is actionable.
 

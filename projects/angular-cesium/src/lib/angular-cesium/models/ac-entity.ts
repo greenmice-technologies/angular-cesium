@@ -1,5 +1,5 @@
 /**
- * Angular Cesium parent entity, all entities should inherit from it.
+ * ngx-cesium parent entity, all entities should inherit from it.
  * ```typescript
  * entity= new AcEntity({
  *  	id: 0,
