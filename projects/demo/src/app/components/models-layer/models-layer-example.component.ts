@@ -12,7 +12,7 @@ import { map } from 'rxjs/operators';
                               position: track.position,
                               minimumPixelSize: 100,
                               maximumScale : 20000,
-                              uri: 'http://www.angular-cesium.com/assets/CesiumAir/Cesium_Air.gltf',
+                              uri: 'https://greenmice-storage.ams3.cdn.digitaloceanspaces.com/gaia/Cesium_Air.glb',
 														}">
       </ac-model-desc>
     </ac-layer>

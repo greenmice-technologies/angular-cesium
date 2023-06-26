@@ -11,7 +11,7 @@ import { DemoMapComponent } from './components/demo-map/demo-map.component';
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.css'],
-  providers: [ AppSettingsService],
+  providers: [AppSettingsService],
   encapsulation: ViewEncapsulation.None,
 })
 export class AppComponent implements AfterViewInit {
