@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Angular Cesium</title>
+        <title>ngx-cesium</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -15,7 +15,7 @@
     <body>
 
         <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
-            <a href="./" class="navbar-brand">Angular Cesium</a>
+            <a href="./" class="navbar-brand">ngx-cesium</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
 
@@ -56,7 +56,7 @@ $ yarn
 $ yarn demo:start
 $ open http://localhost:4200</code></pre></div></li>
 <li>More demos:<ul>
-<li><a href="https://github.com/greenmice-technologies/angular-cesium-demo">Angular Cesium Demo</a></li>
+<li><a href="https://github.com/greenmice-technologies/angular-cesium-demo">ngx-cesium Demo</a></li>
 <li><a href="http://geo-strike.com">GeoStrike</a> - <a href="https://github.com/Webiks/GeoStrike">Repository</a></li>
 <li><a href="https://glo.now.sh">GLO</a> - <a href="https://github.com/sofwerx/glo-demo">Repository</a></li>
 <li><a href="https://github.com/sofwerx/safehouse">Safehouse</a></li>
@@ -151,7 +151,7 @@ export class SomeComponent{
   }
 }</code></pre></div><p>For further details check the <a href="https://docs.angular-cesium.com/guides/map-events">map events guide</a></p>
 <h3>Map layers</h3>
-<p>With angular cesium you can define your map provider in a declarative way using <code>ac-map-layer-provider</code> :</p>
+<p>With ngx-cesium you can define your map provider in a declarative way using <code>ac-map-layer-provider</code> :</p>
 <div><pre class="line-numbers"><code class="language-html">    &lt;ac-map-layer-provider *ngIf=&quot;appSettingsService.showMapLayer&quot; [provider]=&quot;MapLayerProviderOptions.ArcGisMapServer&quot;
                            [options]=&quot;{
                                 url : &#39;https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer&#39;
@@ -169,7 +169,7 @@ export class SomeComponent{
          url: &#39;https://beta.cesium.com/api/assets/1461?access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJkYWJmM2MzNS02OWM5LTQ3OWItYjEyYS0xZmNlODM5ZDNkMTYiLCJpZCI6NDQsImFzc2V0cyI6WzE0NjFdLCJpYXQiOjE0OTkyNjQ3NDN9.vuR75SqPDKcggvUrG_vpx0Av02jdiAxnnB1fNf-9f7s&#39;
        }&quot;&gt;
    &lt;/ac-3d-tile-layer&gt;</code></pre></div><h3>Multiple maps support</h3>
-<p>Angular Cesium supports integration of multiple maps, for more details <a href="https://docs.angular-cesium.com/guides/multiple-maps-sync">here</a></p>
+<p>ngx-cesium supports integration of multiple maps, for more details <a href="https://docs.angular-cesium.com/guides/multiple-maps-sync">here</a></p>
 <h3>MapLayerProviderOptions Updates</h3>
 <p><code>MapboxStyleImageryProvider</code> has been added to <code>MapLayerProviderOptions</code> for mapBox styles support. </p>
 <p>Component Usage:</p>
@@ -201,7 +201,7 @@ export class SomeComponent{
 </code></pre></div><h4><a href="https://docs.angular-cesium.com/guides/camera-controls">CameraService</a></h4>
 <p>Util service that wraps cesium camera, exposes the scene&#39;s camera and screenSpaceCameraController.</p>
 <h3>MapsManagerService</h3>
-<p>Angular Cesium extends cesium api and expose additional features, but if you want to use pure cesium api you can use <a href="https://articodeltd.github.io/angular-cesium/injectables/MapsManagerService.html">MapsManagerService</a> to receive cesium <a href="https://cesiumjs.org/Cesium/Build/Documentation/Viewer.html">viewer</a> or any other util service that was created by <code>ac-map</code>.</p>
+<p>ngx-cesium extends cesium api and expose additional features, but if you want to use pure cesium api you can use <a href="https://articodeltd.github.io/angular-cesium/injectables/MapsManagerService.html">MapsManagerService</a> to receive cesium <a href="https://cesiumjs.org/Cesium/Build/Documentation/Viewer.html">viewer</a> or any other util service that was created by <code>ac-map</code>.</p>
 <div><pre class="line-numbers"><code class="language-typescript">class MyComp {
 constructor(mapsManagerService: MapsManagerService)
     const viewer = mapsManagerService.getMap().getCesiumViewer();
@@ -235,7 +235,7 @@ constructor(mapsManagerService: MapsManagerService)
 <h2>License</h2>
 <p><a href="https://opensource.org/licenses/MIT">Mit License</a></p>
 <h2>Support</h2>
-<p>Angular Cesium is an open source project, feel free to open issues,ask questions and open PRs.
+<p>ngx-cesium is an open source project, feel free to open issues,ask questions and open PRs.
 For additional support options contact us: <a href="mailto:%5Ccontact@articode.co">contact@articode.co</a>.</p>
 <p>Articode is a software company that specializes in GIS solutions and is the creator and the maintainer of angular-cesium.
 Feel free to contact us for consulting or any business endeavors.</p>

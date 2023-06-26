@@ -15,7 +15,7 @@ customElements.define('compodoc-menu', class extends HTMLElement {
         <nav>
             <ul class="list">
                 <li class="title">
-                    <a href="index.html" data-type="index-link">Angular Cesium</a>
+                    <a href="index.html" data-type="index-link">ngx-cesium</a>
                 </li>
 
                 <li class="divider"></li>
@@ -64,13 +64,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/AngularCesiumModule.html" data-type="entity-link" >AngularCesiumModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ?
-                                            'data-bs-target="#components-links-module-AngularCesiumModule-a5a5d89e72d8ce60bbdfec26b96d79e2ba22d16a991f29d34d3f845d1b7c60e340aa0b742f04690ba3b88e8f327d4df5460f7df026abaacf298421c0920e503d"' : 'data-bs-target="#xs-components-links-module-AngularCesiumModule-a5a5d89e72d8ce60bbdfec26b96d79e2ba22d16a991f29d34d3f845d1b7c60e340aa0b742f04690ba3b88e8f327d4df5460f7df026abaacf298421c0920e503d"' }>
+                                            'data-bs-target="#components-links-module-AngularCesiumModule-e00fab72da104cc1ec9735b5ff3eab00c0e40b78a60aeb2d348b9da02bf0693395e4e3dd860b3c3bbfc148efc0f85b736265f760e3faf8be36ae3162ca325a65"' : 'data-bs-target="#xs-components-links-module-AngularCesiumModule-e00fab72da104cc1ec9735b5ff3eab00c0e40b78a60aeb2d348b9da02bf0693395e4e3dd860b3c3bbfc148efc0f85b736265f760e3faf8be36ae3162ca325a65"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-AngularCesiumModule-a5a5d89e72d8ce60bbdfec26b96d79e2ba22d16a991f29d34d3f845d1b7c60e340aa0b742f04690ba3b88e8f327d4df5460f7df026abaacf298421c0920e503d"' :
-                                            'id="xs-components-links-module-AngularCesiumModule-a5a5d89e72d8ce60bbdfec26b96d79e2ba22d16a991f29d34d3f845d1b7c60e340aa0b742f04690ba3b88e8f327d4df5460f7df026abaacf298421c0920e503d"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-AngularCesiumModule-e00fab72da104cc1ec9735b5ff3eab00c0e40b78a60aeb2d348b9da02bf0693395e4e3dd860b3c3bbfc148efc0f85b736265f760e3faf8be36ae3162ca325a65"' :
+                                            'id="xs-components-links-module-AngularCesiumModule-e00fab72da104cc1ec9735b5ff3eab00c0e40b78a60aeb2d348b9da02bf0693395e4e3dd860b3c3bbfc148efc0f85b736265f760e3faf8be36ae3162ca325a65"' }>
                                             <li class="link">
                                                 <a href="components/AcArcComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >AcArcComponent</a>
                                             </li>
@@ -219,13 +219,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                     </li>
                                 <li class="chapter inner">
                                     <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ?
-                                        'data-bs-target="#directives-links-module-AngularCesiumModule-a5a5d89e72d8ce60bbdfec26b96d79e2ba22d16a991f29d34d3f845d1b7c60e340aa0b742f04690ba3b88e8f327d4df5460f7df026abaacf298421c0920e503d"' : 'data-bs-target="#xs-directives-links-module-AngularCesiumModule-a5a5d89e72d8ce60bbdfec26b96d79e2ba22d16a991f29d34d3f845d1b7c60e340aa0b742f04690ba3b88e8f327d4df5460f7df026abaacf298421c0920e503d"' }>
+                                        'data-bs-target="#directives-links-module-AngularCesiumModule-e00fab72da104cc1ec9735b5ff3eab00c0e40b78a60aeb2d348b9da02bf0693395e4e3dd860b3c3bbfc148efc0f85b736265f760e3faf8be36ae3162ca325a65"' : 'data-bs-target="#xs-directives-links-module-AngularCesiumModule-e00fab72da104cc1ec9735b5ff3eab00c0e40b78a60aeb2d348b9da02bf0693395e4e3dd860b3c3bbfc148efc0f85b736265f760e3faf8be36ae3162ca325a65"' }>
                                         <span class="icon ion-md-code-working"></span>
                                         <span>Directives</span>
                                         <span class="icon ion-ios-arrow-down"></span>
                                     </div>
-                                    <ul class="links collapse" ${ isNormalMode ? 'id="directives-links-module-AngularCesiumModule-a5a5d89e72d8ce60bbdfec26b96d79e2ba22d16a991f29d34d3f845d1b7c60e340aa0b742f04690ba3b88e8f327d4df5460f7df026abaacf298421c0920e503d"' :
-                                        'id="xs-directives-links-module-AngularCesiumModule-a5a5d89e72d8ce60bbdfec26b96d79e2ba22d16a991f29d34d3f845d1b7c60e340aa0b742f04690ba3b88e8f327d4df5460f7df026abaacf298421c0920e503d"' }>
+                                    <ul class="links collapse" ${ isNormalMode ? 'id="directives-links-module-AngularCesiumModule-e00fab72da104cc1ec9735b5ff3eab00c0e40b78a60aeb2d348b9da02bf0693395e4e3dd860b3c3bbfc148efc0f85b736265f760e3faf8be36ae3162ca325a65"' :
+                                        'id="xs-directives-links-module-AngularCesiumModule-e00fab72da104cc1ec9735b5ff3eab00c0e40b78a60aeb2d348b9da02bf0693395e4e3dd860b3c3bbfc148efc0f85b736265f760e3faf8be36ae3162ca325a65"' }>
                                         <li class="link">
                                             <a href="directives/AcHtmlContainerDirective.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >AcHtmlContainerDirective</a>
                                         </li>
@@ -236,13 +236,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 </li>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-bs-toggle="collapse" ${ isNormalMode ?
-                                            'data-bs-target="#pipes-links-module-AngularCesiumModule-a5a5d89e72d8ce60bbdfec26b96d79e2ba22d16a991f29d34d3f845d1b7c60e340aa0b742f04690ba3b88e8f327d4df5460f7df026abaacf298421c0920e503d"' : 'data-bs-target="#xs-pipes-links-module-AngularCesiumModule-a5a5d89e72d8ce60bbdfec26b96d79e2ba22d16a991f29d34d3f845d1b7c60e340aa0b742f04690ba3b88e8f327d4df5460f7df026abaacf298421c0920e503d"' }>
+                                            'data-bs-target="#pipes-links-module-AngularCesiumModule-e00fab72da104cc1ec9735b5ff3eab00c0e40b78a60aeb2d348b9da02bf0693395e4e3dd860b3c3bbfc148efc0f85b736265f760e3faf8be36ae3162ca325a65"' : 'data-bs-target="#xs-pipes-links-module-AngularCesiumModule-e00fab72da104cc1ec9735b5ff3eab00c0e40b78a60aeb2d348b9da02bf0693395e4e3dd860b3c3bbfc148efc0f85b736265f760e3faf8be36ae3162ca325a65"' }>
                                             <span class="icon ion-md-add"></span>
                                             <span>Pipes</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="pipes-links-module-AngularCesiumModule-a5a5d89e72d8ce60bbdfec26b96d79e2ba22d16a991f29d34d3f845d1b7c60e340aa0b742f04690ba3b88e8f327d4df5460f7df026abaacf298421c0920e503d"' :
-                                            'id="xs-pipes-links-module-AngularCesiumModule-a5a5d89e72d8ce60bbdfec26b96d79e2ba22d16a991f29d34d3f845d1b7c60e340aa0b742f04690ba3b88e8f327d4df5460f7df026abaacf298421c0920e503d"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="pipes-links-module-AngularCesiumModule-e00fab72da104cc1ec9735b5ff3eab00c0e40b78a60aeb2d348b9da02bf0693395e4e3dd860b3c3bbfc148efc0f85b736265f760e3faf8be36ae3162ca325a65"' :
+                                            'id="xs-pipes-links-module-AngularCesiumModule-e00fab72da104cc1ec9735b5ff3eab00c0e40b78a60aeb2d348b9da02bf0693395e4e3dd860b3c3bbfc148efc0f85b736265f760e3faf8be36ae3162ca325a65"' }>
                                             <li class="link">
                                                 <a href="pipes/PixelOffsetPipe.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >PixelOffsetPipe</a>
                                             </li>
