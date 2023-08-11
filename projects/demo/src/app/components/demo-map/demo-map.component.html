@@ -25,23 +25,23 @@
 
   <!-- end - mapbox style image provider-->
 
-  <ac-3d-tile-layer
+  <!-- <ac-3d-tile-layer
     *ngIf="appSettingsService.show3dtiles"
     [options]="{
       url: Cesium.IonResource.fromAssetId(29328)
     }"
   >
-  </ac-3d-tile-layer>
+  </ac-3d-tile-layer> -->
   <!-- <entities-with-arrays-example #layer [show]="true"></entities-with-arrays-example>  -->
-  <!-- <html-layer-example> </html-layer-example>-->
+  <!-- <html-layer-example> </html-layer-example> -->
   <!-- <boxes-layer-example></boxes-layer-example> -->
   <!-- <models-layer-example></models-layer-example>-->
   <!-- <cylinder-layer-example></cylinder-layer-example>-->
   <!-- <ellipsoid-layer-example></ellipsoid-layer-example>-->
   <!-- <volume-layer-example></volume-layer-example> -->
   <!-- <wall-layer-example></wall-layer-example>-->
-  <!-- <ellipse-layer-example #layer></ellipse-layer-example>-->
-  <!--  <billboard-layer-example></billboard-layer-example>-->
+  <ellipse-layer-example #layer></ellipse-layer-example>
+   <billboard-layer-example></billboard-layer-example>
   <!--   <label-layer-example #layer></label-layer-example>-->
   <!--   <circle-layer-example #layer></circle-layer-example>-->
   <!--   <polyline-layer-example #layer></polyline-layer-example>-->
