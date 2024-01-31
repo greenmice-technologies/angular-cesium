@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import {
   AcEntity,
   AcLayerComponent,
@@ -11,7 +12,6 @@ import {
   SceneMode
 } from 'angular-cesium';
 import { BehaviorSubject } from 'rxjs';
-import { MatLegacySnackBar as MatSnackBar } from '@angular/material/legacy-snack-bar';
 
 const initialLocation = {
   id: '1',
