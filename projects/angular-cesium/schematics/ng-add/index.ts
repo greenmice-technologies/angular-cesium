@@ -71,7 +71,7 @@ function updateStyles(): Rule {
 function installPackageJsonDependencies(): Rule {
   return (host: Tree, context: SchematicContext) => {
     context.addTask(new NodePackageInstallTask());
-    context.addTask(new NodePackageInstallTask({packageName: 'cesium'}));
+    context.addTask(new NodePackageInstallTask({ packageName: 'cesium' }));
     return host;
   };
 }
@@ -97,7 +97,7 @@ function getProjectMainFile(project: WorkspaceProject): string {
   if (!buildOptions.main) {
     throw new SchematicsException(
       `Could not find the project main file inside of the ` +
-        `workspace config (${project.sourceRoot})`
+      `workspace config (${project.sourceRoot})`
     );
   }
 
@@ -134,13 +134,13 @@ function addModuleImportToRootModule() {
     const moduleSource = getSourceFile(tree, modulePath);
 
     const changes = addImportToModule(
-      moduleSource,
+      moduleSource as any,
       modulePath,
       'AngularCesiumModule.forRoot()',
       'angular-cesium'
     ).concat(
       addImportToModule(
-        moduleSource,
+        moduleSource as any,
         modulePath,
         'AngularCesiumWidgetsModule',
         'angular-cesium'
