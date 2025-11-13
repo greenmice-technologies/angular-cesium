@@ -3,8 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { AcNotification, ActionType, CesiumService } from 'angular-cesium';
 
 @Component({
-  selector: 'hippodrome-layer-example',
-  template: `
+    selector: 'hippodrome-layer-example',
+    template: `
     <ac-layer acFor="let track of simTracks$" [context]="this">
       <ac-corridor-desc props="{
 														positions: track.positions,
@@ -15,7 +15,8 @@ import { AcNotification, ActionType, CesiumService } from 'angular-cesium';
       </ac-corridor-desc>
     </ac-layer>
   `,
-  providers: []
+    providers: [],
+    standalone: false
 })
 export class HippodromeLayerExampleComponent implements OnInit {
 

@@ -24,9 +24,10 @@ const initialLocation = {
 };
 
 @Component({
-  selector: 'track-entity-layer',
-  templateUrl: 'track-entity-layer.component.html',
-  styleUrls: [],
+    selector: 'track-entity-layer',
+    templateUrl: 'track-entity-layer.component.html',
+    styleUrls: [],
+    standalone: false
 })
 export class TrackEntityLayerComponent implements OnInit, AfterViewInit {
   @ViewChild(AcLayerComponent) layer: AcLayerComponent;

@@ -2,10 +2,11 @@ import { AfterViewInit, Component, Input } from '@angular/core';
 import { MapsManagerService, SceneMode, ViewerConfiguration } from 'angular-cesium';
 
 @Component({
-  selector: 'main-map',
-  templateUrl: './main-map.component.html',
-  providers: [ViewerConfiguration],
-  styleUrls: ['./main-map.component.scss']
+    selector: 'main-map',
+    templateUrl: './main-map.component.html',
+    providers: [ViewerConfiguration],
+    styleUrls: ['./main-map.component.scss'],
+    standalone: false
 })
 export class MainMapComponent implements AfterViewInit {
   @Input() multiMaps = false

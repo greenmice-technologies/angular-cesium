@@ -5,8 +5,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { AcEntity, AcLayerComponent, AcNotification, ActionType } from 'angular-cesium';
 
 @Component({
-  selector: 'polygon-layer-example',
-  template: `
+    selector: 'polygon-layer-example',
+    template: `
       <ac-layer acFor="let polygon of polygons$" [context]="this" [show]="true">
           <ac-polygon-desc props="{
             hierarchy: polygon.hierarchy,
@@ -22,6 +22,7 @@ import { AcEntity, AcLayerComponent, AcNotification, ActionType } from 'angular-
       </ac-layer>
 
   `,
+    standalone: false
 })
 export class PolygonLayerExampleComponent implements OnInit {
   @ViewChild(AcLayerComponent) layer: AcLayerComponent;

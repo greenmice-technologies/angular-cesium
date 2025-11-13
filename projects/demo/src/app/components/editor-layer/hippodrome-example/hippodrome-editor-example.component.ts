@@ -3,11 +3,12 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { EditActions, HippodromeEditorObservable, HippodromeEditorService, HippodromeEditUpdate, LabelProps } from 'angular-cesium';
 
 @Component({
-  selector: 'hippodrome-editor-example',
-  templateUrl: 'hippodrome-editor-example.component.html',
-  styleUrls: ['./hippodrome-editor-example.component.css'],
-  providers: [HippodromeEditorService],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'hippodrome-editor-example',
+    templateUrl: 'hippodrome-editor-example.component.html',
+    styleUrls: ['./hippodrome-editor-example.component.css'],
+    providers: [HippodromeEditorService],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class HippodromeEditorExampleComponent implements OnInit {
   editing$: HippodromeEditorObservable;

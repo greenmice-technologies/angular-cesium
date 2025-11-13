@@ -4,8 +4,8 @@ import { AcNotification, ActionType } from 'angular-cesium';
 import { map } from 'rxjs/operators';
 
 @Component({
-  selector: 'boxes-layer-example',
-  template: `
+    selector: 'boxes-layer-example',
+    template: `
     <ac-layer acFor="let box of boxes$" [context]="this" [debug]="true">
       <ac-box-desc props="{
 														position: box.position,
@@ -18,6 +18,7 @@ import { map } from 'rxjs/operators';
       </ac-box-desc>
     </ac-layer>
   `,
+    standalone: false
 })
 export class BoxesLayerComponent implements OnInit {
 

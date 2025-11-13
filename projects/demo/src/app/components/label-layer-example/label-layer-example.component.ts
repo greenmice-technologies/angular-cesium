@@ -3,9 +3,10 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { AcLayerComponent, AcNotification, ActionType } from 'angular-cesium';
 
 @Component({
-  selector: 'label-layer-example',
-  templateUrl: 'label-layer-example.component.html',
-  styleUrls: ['label-layer-example.component.css']
+    selector: 'label-layer-example',
+    templateUrl: 'label-layer-example.component.html',
+    styleUrls: ['label-layer-example.component.css'],
+    standalone: false
 })
 export class LabelLayerExampleComponent implements OnInit, AfterViewInit {
   @ViewChild(AcLayerComponent) layer: AcLayerComponent;

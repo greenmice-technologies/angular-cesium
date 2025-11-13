@@ -3,8 +3,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { AcEntity, AcLayerComponent, AcNotification, ActionType } from 'angular-cesium';
 
 @Component({
-  selector: 'rectangle-layer-example',
-  template: `
+    selector: 'rectangle-layer-example',
+    template: `
       <ac-layer acFor="let rectangle of rectangles$" [context]="this" [show]="true">
           <ac-rectangle-desc props="{
               coordinates: rectangle.coordinates,
@@ -20,6 +20,7 @@ import { AcEntity, AcLayerComponent, AcNotification, ActionType } from 'angular-
 
 
   `,
+    standalone: false
 })
 export class RectangleLayerExampleComponent implements OnInit {
   @ViewChild(AcLayerComponent) layer: AcLayerComponent;

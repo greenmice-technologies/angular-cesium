@@ -13,12 +13,13 @@ import { CesiumService } from '../../services/cesium/cesium.service';
  */
 
 @Component({
-  selector: 'ac-html',
-  template: `<ng-content></ng-content>`,
-  styles: [`:host {
+    selector: 'ac-html',
+    template: `<ng-content></ng-content>`,
+    styles: [`:host {
                 position: absolute;
                 z-index: 100;
-				}`]
+				}`],
+    standalone: false
 })
 export class AcHtmlComponent implements DoCheck, OnDestroy, OnInit {
 

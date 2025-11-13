@@ -5,8 +5,8 @@ import { Component, OnInit } from '@angular/core';
 import { AcEntity, AcNotification, ActionType } from 'angular-cesium';
 
 @Component({
-  selector: 'polygon-performance-test',
-  template: `
+    selector: 'polygon-performance-test',
+    template: `
     <ac-layer acFor="let polygon of polygons$" [context]="this" [show]="true">
       <ac-polygon-desc props="{
         hierarchy: polygon.hierarchy,
@@ -16,6 +16,7 @@ import { AcEntity, AcNotification, ActionType } from 'angular-cesium';
     		}">
       </ac-polygon-desc>
   `,
+    standalone: false
 })
 export class PolygonPerformanceTestComponent implements OnInit {
 

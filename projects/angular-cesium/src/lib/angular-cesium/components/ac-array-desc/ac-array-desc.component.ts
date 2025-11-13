@@ -63,8 +63,8 @@ function _get(object: AnyObject, path: string | string[], defaultValue?: any): a
  */
 
 @Component({
-  selector: 'ac-array-desc',
-  template: `
+    selector: 'ac-array-desc',
+    template: `
     <ac-layer #layer [acFor]="getAcForString()"
               [context]="layerService.context"
               [options]="layerService.options"
@@ -73,7 +73,8 @@ function _get(object: AnyObject, path: string | string[], defaultValue?: any): a
       <ng-content #content></ng-content>
     </ac-layer>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class AcArrayDescComponent implements OnChanges, OnInit, AfterContentInit, OnDestroy, IDescription {
 

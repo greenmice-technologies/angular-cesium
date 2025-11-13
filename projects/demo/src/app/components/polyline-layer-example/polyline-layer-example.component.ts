@@ -4,8 +4,8 @@ import { map } from 'rxjs/operators';
 import { from, Observable } from 'rxjs';
 
 @Component({
-  selector: 'polyline-layer-example',
-  template: `
+    selector: 'polyline-layer-example',
+    template: `
       <ac-layer acFor="let polyline of polylines$" [context]="this" [show]="show">
           <ac-polyline-desc props="{
               width : 8,
@@ -16,6 +16,7 @@ import { from, Observable } from 'rxjs';
       </ac-layer>
 
   `,
+    standalone: false
 })
 export class PolylineLayerExampleComponent implements OnInit {
   polylines$: Observable<AcNotification>;

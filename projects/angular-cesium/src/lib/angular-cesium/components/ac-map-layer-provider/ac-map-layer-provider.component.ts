@@ -18,8 +18,9 @@ import { MapLayerProviderOptions } from '../../models';
  *  ```
  */
 @Component({
-  selector: 'ac-map-layer-provider',
-  template: '',
+    selector: 'ac-map-layer-provider',
+    template: '',
+    standalone: false
 })
 export class AcMapLayerProviderComponent implements OnInit, OnChanges, OnDestroy {
 

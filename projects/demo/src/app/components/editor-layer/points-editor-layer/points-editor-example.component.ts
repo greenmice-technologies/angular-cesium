@@ -14,11 +14,12 @@ import {
 import { defaultLabelProps } from 'projects/angular-cesium/src/public_api';
 
 @Component({
-  selector: 'points-editor-example',
-  templateUrl: 'points-editor-example.component.html',
-  styleUrls: ['./points-editor-example.component.css'],
-  providers: [PointsEditorService],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'points-editor-example',
+    templateUrl: 'points-editor-example.component.html',
+    styleUrls: ['./points-editor-example.component.css'],
+    providers: [PointsEditorService],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class PointsEditorExampleComponent implements OnInit {
   counter = 0;

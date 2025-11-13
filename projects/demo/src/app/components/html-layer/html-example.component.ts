@@ -3,9 +3,10 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { AcLayerComponent, AcNotification, ActionType } from 'angular-cesium';
 
 @Component({
-  selector: 'html-layer-example',
-  templateUrl: './html-example.component.html',
-  styleUrls: ['./html-example.component.css']
+    selector: 'html-layer-example',
+    templateUrl: './html-example.component.html',
+    styleUrls: ['./html-example.component.css'],
+    standalone: false
 })
 export class HtmlExampleComponent implements OnInit {
   @ViewChild(AcLayerComponent) layer: AcLayerComponent;

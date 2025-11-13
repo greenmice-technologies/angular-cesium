@@ -11,7 +11,8 @@ import { Pipe, PipeTransform } from '@angular/core';
  * </ac-label-desc>
  */
 @Pipe({
-  name: 'pixelOffset'
+    name: 'pixelOffset',
+    standalone: false
 })
 export class PixelOffsetPipe implements PipeTransform {
 

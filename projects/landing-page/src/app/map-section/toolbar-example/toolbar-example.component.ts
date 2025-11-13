@@ -13,18 +13,19 @@ import {
 } from 'angular-cesium';
 
 @Component({
-  selector: 'toolbar-example',
-  templateUrl: 'toolbar-example.component.html',
-  styleUrls: ['toolbar-example.scss'],
-  providers: [
-    ZoomToRectangleService,
-    CirclesEditorService,
-    EllipsesEditorService,
-    PolygonsEditorService,
-    RectanglesEditorService,
-    HippodromeEditorService,
-    PointsEditorService,
-  ],
+    selector: 'toolbar-example',
+    templateUrl: 'toolbar-example.component.html',
+    styleUrls: ['toolbar-example.scss'],
+    providers: [
+        ZoomToRectangleService,
+        CirclesEditorService,
+        EllipsesEditorService,
+        PolygonsEditorService,
+        RectanglesEditorService,
+        HippodromeEditorService,
+        PointsEditorService,
+    ],
+    standalone: false
 })
 export class ToolbarExampleComponent implements OnInit {
   rnb: PolylineEditorObservable;
