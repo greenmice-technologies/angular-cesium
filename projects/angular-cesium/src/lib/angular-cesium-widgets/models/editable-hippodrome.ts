@@ -19,7 +19,7 @@ export class EditableHippodrome extends AcEntity {
   private _labels: LabelProps[] = [];
 
   constructor(
-    private id: string,
+    public id: string,
     private pointsLayer: AcLayerComponent,
     private hippodromeLayer: AcLayerComponent,
     private coordinateConverter: CoordinateConverter,

@@ -20,7 +20,7 @@ export class EditableRectangle extends AcEntity {
   private _labels: LabelProps[] = [];
 
   constructor(
-    private id: string,
+    public id: string,
     private pointsLayer: AcLayerComponent,
     private rectangleLayer: AcLayerComponent,
     private coordinateConverter: CoordinateConverter,

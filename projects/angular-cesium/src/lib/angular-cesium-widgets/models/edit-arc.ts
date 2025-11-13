@@ -4,7 +4,7 @@ import { PolylineProps } from './polyline-edit-options';
 
 export class EditArc extends AcEntity {
   static counter = 0;
-  private id: string;
+  public id: string;
   private editedEntityId: string;
   private _center: Cartesian3;
   private _radius: number;

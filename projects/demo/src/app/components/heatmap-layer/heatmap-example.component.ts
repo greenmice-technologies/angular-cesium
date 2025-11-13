@@ -35,7 +35,7 @@ export class HeatmapExampleComponent implements OnInit {
           center: this.circleCenter,
           circleMaterial: this.circleHeatMapMaterial,
           rectMaterial: this.rectHeatMapMaterial,
-        },
+        } as any,
       });
     }, 1000);
   }

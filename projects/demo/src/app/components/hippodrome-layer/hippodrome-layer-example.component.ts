@@ -29,7 +29,7 @@ export class HippodromeLayerExampleComponent implements OnInit {
           -90.0, 40.0,
           -93.0, 40.0,
         ]),
-      }
+      } as any
     },
     {
       id: '2',
@@ -40,7 +40,7 @@ export class HippodromeLayerExampleComponent implements OnInit {
           -92.0, 38.0,
           -93.0, 38.0,
         ]),
-      }
+      } as any
     });
 
   Cesium = Cesium;

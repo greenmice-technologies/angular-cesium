@@ -23,7 +23,7 @@ export class EditableCircle extends AcEntity {
   private _labels: LabelProps[] = [];
 
   constructor(
-    private id: string,
+    public id: string,
     private circlesLayer: AcLayerComponent,
     private pointsLayer: AcLayerComponent,
     private arcsLayer: AcLayerComponent,

@@ -22,7 +22,7 @@ export class EditablePolyline extends AcEntity {
   private _labels: LabelProps[] = [];
   private _outlineInstance = null;
 
-  constructor(private id: string,
+  constructor(public id: string,
               private pointsLayer: AcLayerComponent,
               private polylinesLayer: AcLayerComponent,
               private coordinateConverter: CoordinateConverter,

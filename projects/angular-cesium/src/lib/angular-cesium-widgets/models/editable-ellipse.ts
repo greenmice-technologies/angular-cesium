@@ -25,7 +25,7 @@ export class EditableEllipse extends AcEntity {
   private _labels: LabelProps[] = [];
 
   constructor(
-    private id: string,
+    public id: string,
     private ellipsesLayer: AcLayerComponent,
     private pointsLayer: AcLayerComponent,
     private coordinateConverter: CoordinateConverter,

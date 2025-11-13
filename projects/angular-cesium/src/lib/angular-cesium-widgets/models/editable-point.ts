@@ -17,7 +17,7 @@ export class EditablePoint extends AcEntity {
   private _props: PointProps;
   private _labels: LabelProps[] = [];
 
-  constructor(private id: string,
+  constructor(public id: string,
               private pointLayer: AcLayerComponent,
               private coordinateConverter: CoordinateConverter,
               private editOptions: PointEditOptions,

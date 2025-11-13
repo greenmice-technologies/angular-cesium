@@ -5,7 +5,7 @@ import { PolylineProps } from './polyline-edit-options';
 export class EditPolyline extends AcEntity {
   static counter = 0;
   private editedEntityId: string;
-  private id: string;
+  public id: string;
   private positions: Cartesian3[];
   private _polylineProps: PolylineProps;
 

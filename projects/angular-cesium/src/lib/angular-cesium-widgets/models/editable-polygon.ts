@@ -23,7 +23,7 @@ export class EditablePolygon extends AcEntity {
   private _labels: LabelProps[] = [];
   private _outlineInstance = null;
 
-  constructor(private id: string,
+  constructor(public id: string,
               private polygonsLayer: AcLayerComponent,
               private pointsLayer: AcLayerComponent,
               private polylinesLayer: AcLayerComponent,

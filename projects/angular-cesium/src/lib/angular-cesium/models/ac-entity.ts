@@ -10,6 +10,10 @@
  */
 export class AcEntity {
 
+  id?: number | string;
+  name?: string;
+  position?: any;
+
   /**
    * Creates entity from a json
    * @param json entity object

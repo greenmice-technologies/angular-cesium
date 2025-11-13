@@ -16,8 +16,8 @@ import { LabelProps } from '../../models/label-props';
 import { EditableRectangle } from '../../models/editable-rectangle';
 
 @Component({
-    selector: 'rectangles-editor',
-    template: /*html*/ `
+  selector: 'rectangles-editor',
+  template: /*html*/ `
     <ac-layer #editPointsLayer acFor="let point of editPoints$" [context]="this">
       <ac-point-desc
         props="{
@@ -80,9 +80,9 @@ import { EditableRectangle } from '../../models/editable-rectangle';
       </ac-array-desc>
     </ac-layer>
   `,
-    providers: [CoordinateConverter, RectanglesManagerService],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+  providers: [CoordinateConverter, RectanglesManagerService],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false
 })
 export class RectanglesEditorComponent implements OnDestroy {
   private editLabelsRenderFn: (update: RectangleEditUpdate, labels: LabelProps[]) => LabelProps[];
@@ -131,7 +131,7 @@ export class RectanglesEditorComponent implements OnDestroy {
 
     if (labels) {
       rectangle.labels = labels;
-      this.editRectanglesLayer.update(rectangle, rectangle.getId());
+      this.editRectanglesLayer.update(rectangle as any, rectangle.getId());
       return;
     }
 
@@ -140,12 +140,12 @@ export class RectanglesEditorComponent implements OnDestroy {
     }
 
     rectangle.labels = this.editLabelsRenderFn(update, rectangle.labels);
-    this.editRectanglesLayer.update(rectangle, rectangle.getId());
+    this.editRectanglesLayer.update(rectangle as any, rectangle.getId());
   }
 
   removeEditLabels(rectangle: EditableRectangle) {
     rectangle.labels = [];
-    this.editRectanglesLayer.update(rectangle, rectangle.getId());
+    this.editRectanglesLayer.update(rectangle as any, rectangle.getId());
   }
 
   handleCreateUpdates(update: RectangleEditUpdate) {
