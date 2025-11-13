@@ -1,8 +1,8 @@
 import { fromEvent as observableFromEvent, Observable, Subject } from 'rxjs';
 
 import { map, merge, takeUntil, tap } from 'rxjs/operators';
-import { Inject, Injectable } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
+import { Inject, Injectable, DOCUMENT } from '@angular/core';
+
 import { Vec2 } from '../../angular-cesium/models/vec2';
 import { Cartesian3 } from '../../angular-cesium/models/cartesian3';
 import { CoordinateConverter } from '../../angular-cesium/services/coordinate-converter/coordinate-converter.service';
