@@ -13,10 +13,75 @@
         <link rel="stylesheet" href="./styles/stripe.css">
     </head>
     <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
 
-        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
-            <a href="./" class="navbar-brand">ngx-cesium</a>
-            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="./" class="navbar-brand">ngx-cesium</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
         </div>
 
         <div class="xs-menu menu" id="mobile-menu">
@@ -25,12 +90,13 @@
 
         <div class="container-fluid main">
            <div class="row main">
-               <div class="hidden-xs menu">
+               <div class="d-none d-md-block menu">
                    <compodoc-menu mode="normal"></compodoc-menu>
                </div>
                <!-- START CONTENT -->
-               <div class="content getting-started">
+               <div class="content readme">
                    <div class="content-data">
+
 
 <h1>Angular-Cesium</h1>
 <img src="https://preview.ibb.co/cpDuwF/angular_cesium.png" width=150 alt="Drawing" style="margin:10"/>
@@ -43,14 +109,14 @@ Check out our <a href="https://docs.angular-cesium.com">Docs</a> and our blog po
 <h2>Getting started</h2>
 <h4>If you are using Angular CLI, you can add the angular-cesium library using schematics</h4>
 <ul>
-<li>add <code>angular-cesium</code>:<div><pre class="line-numbers"><code class="language-bash">$ ng add angular-cesium</code></pre></div></li>
+<li>add <code>angular-cesium</code>:<b>Example :</b><div><pre class="line-numbers"><code class="language-bash">$ ng add angular-cesium</code></pre></div></li>
 </ul>
 <h4>Manual installation details <a href="https://docs.angular-cesium.com/getting-started/installation">here</a>.</h4>
 <h2>Demo</h2>
 <ul>
 <li>You can try and learn about angular-cesium from our demo.</li>
 <li>The demo contains many examples, check out the <code>demo-map.component.ts</code> file.</li>
-<li>Run: <div><pre class="line-numbers"><code class="language-none">$ git clone https://github.com/greenmice-technologies/angular-cesium.git
+<li>Run: <b>Example :</b><div><pre class="line-numbers"><code class="language-none">$ git clone https://github.com/greenmice-technologies/angular-cesium.git
 $ cd angular-cesium
 $ yarn
 $ yarn demo:start
@@ -67,7 +133,7 @@ $ open http://localhost:4200</code></pre></div></li>
 <h2>Basic example</h2>
 <ul>
 <li><p>In your HTML file :</p>
-<div><pre class="line-numbers"><code class="language-html">  &lt;ac-map&gt;
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">  &lt;ac-map&gt;
       &lt;ac-layer acFor=&quot;let plane of planes$&quot; [show]=&quot;showTracks&quot; [context]=&quot;this&quot;&gt;
           &lt;ac-billboard-desc props=&quot;{
                     image: plane.image,
@@ -131,7 +197,7 @@ For example <code>ac-billboard-desc</code> accepts same members as <a href="http
 <p><code>MapEventsManagerService</code> is a util service for managing all the map events (Click, Mouse_up...), it expose easy API for entity selection, event priority management
 and adds custom events (drag and drop, long press).</p>
 <p>Usage:</p>
-<div><pre class="line-numbers"><code class="language-javascript">&#64;Component(...)
+<b>Example :</b><div><pre class="line-numbers"><code class="language-javascript">&#64;Component(...)
 export class SomeComponent{
   constructor(private eventManager: MapEventsManagerService){
 
@@ -152,7 +218,7 @@ export class SomeComponent{
 }</code></pre></div><p>For further details check the <a href="https://docs.angular-cesium.com/guides/map-events">map events guide</a></p>
 <h3>Map layers</h3>
 <p>With ngx-cesium you can define your map provider in a declarative way using <code>ac-map-layer-provider</code> :</p>
-<div><pre class="line-numbers"><code class="language-html">    &lt;ac-map-layer-provider *ngIf=&quot;appSettingsService.showMapLayer&quot; [provider]=&quot;MapLayerProviderOptions.ArcGisMapServer&quot;
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">    &lt;ac-map-layer-provider *ngIf=&quot;appSettingsService.showMapLayer&quot; [provider]=&quot;MapLayerProviderOptions.ArcGisMapServer&quot;
                            [options]=&quot;{
                                 url : &#39;https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer&#39;
                             }&quot;&gt;
@@ -163,7 +229,7 @@ export class SomeComponent{
 <li>Check out usage example from our demo <a href="https://github.com/TGFTech/angular-cesium/blob/master/demo/app/components/maps-layer/maps-provider-example.component.html">here</a></li>
 </ul>
 <h3>3d Tiles</h3>
-<div><pre class="line-numbers"><code class="language-html">   &lt;ac-3d-tile-layer
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">   &lt;ac-3d-tile-layer
        *ngIf=&quot;appSettingsService.show3dtiles&quot;
        [options]=&quot;{
          url: &#39;https://beta.cesium.com/api/assets/1461?access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJkYWJmM2MzNS02OWM5LTQ3OWItYjEyYS0xZmNlODM5ZDNkMTYiLCJpZCI6NDQsImFzc2V0cyI6WzE0NjFdLCJpYXQiOjE0OTkyNjQ3NDN9.vuR75SqPDKcggvUrG_vpx0Av02jdiAxnnB1fNf-9f7s&#39;
@@ -173,11 +239,11 @@ export class SomeComponent{
 <h3>MapLayerProviderOptions Updates</h3>
 <p><code>MapboxStyleImageryProvider</code> has been added to <code>MapLayerProviderOptions</code> for mapBox styles support. </p>
 <p>Component Usage:</p>
-<div><pre class="line-numbers"><code class="language-javascript">  import{ MapLayerProviderOptions } from &#39;angular-cesium&#39;
+<b>Example :</b><div><pre class="line-numbers"><code class="language-javascript">  import{ MapLayerProviderOptions } from &#39;angular-cesium&#39;
   &#64;Component(...)
   class SomeComponent{
     mapboxStyleImageryProvider = MapLayerProviderOptions.MapboxStyleImageryProvider</code></pre></div><p>Template Usage:</p>
-<div><pre class="line-numbers"><code class="language-html">&lt;ac-map&gt;
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">&lt;ac-map&gt;
   &lt;ac-map-layer-provider 
   [provider]=&quot;mapboxStyleImageryProvider&quot;
   [options]=&quot;{
@@ -192,7 +258,7 @@ export class SomeComponent{
 &lt;/ac-map&gt;</code></pre></div><h3>Camera</h3>
 <h4><a href="https://docs.angular-cesium.com/guides/camera-keyboard-control">Camera Keyboard Control Service</a></h4>
 <p>Service that manages keyboard keys and execute actions per request. Inject the keyboard control service into any layer, under your ac-map component, And defined you keyboard handlers using setKeyboardControls.</p>
-<div><pre class="line-numbers"><code class="language-javascript"> this.keyboardControlService.setKeyboardControls({
+<b>Example :</b><div><pre class="line-numbers"><code class="language-javascript"> this.keyboardControlService.setKeyboardControls({
       W: { action: KeyboardAction.CAMERA_FORWARD },
       S: { action: KeyboardAction.CAMERA_BACKWARD },
       D: { action: KeyboardAction.CAMERA_RIGHT },
@@ -202,7 +268,7 @@ export class SomeComponent{
 <p>Util service that wraps cesium camera, exposes the scene&#39;s camera and screenSpaceCameraController.</p>
 <h3>MapsManagerService</h3>
 <p>ngx-cesium extends cesium api and expose additional features, but if you want to use pure cesium api you can use <a href="https://articodeltd.github.io/angular-cesium/injectables/MapsManagerService.html">MapsManagerService</a> to receive cesium <a href="https://cesiumjs.org/Cesium/Build/Documentation/Viewer.html">viewer</a> or any other util service that was created by <code>ac-map</code>.</p>
-<div><pre class="line-numbers"><code class="language-typescript">class MyComp {
+<b>Example :</b><div><pre class="line-numbers"><code class="language-typescript">class MyComp {
 constructor(mapsManagerService: MapsManagerService)
     const viewer = mapsManagerService.getMap().getCesiumViewer();
     const mapEventManager = mapsManagerService.getMap().getMapEventsManager();
@@ -260,6 +326,9 @@ Feel free to contact us for consulting or any business endeavors.</p>
 
 
 
+
+
+
                    </div><div class="search-results">
     <div class="has-results">
         <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
@@ -285,10 +354,23 @@ Feel free to contact us for consulting or any business endeavors.</p>
 
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 0;
-            var COMPODOC_CURRENT_PAGE_CONTEXT = 'getting-started';
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'readme';
             var COMPODOC_CURRENT_PAGE_URL = 'index.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
 
        <script src="./js/libs/custom-elements.min.js"></script>
        <script src="./js/libs/lit-html.js"></script>
@@ -301,7 +383,6 @@ Feel free to contact us for consulting or any business endeavors.</p>
        <script src="./js/libs/es6-shim.min.js"></script>
        <script src="./js/libs/EventDispatcher.js"></script>
        <script src="./js/libs/promise.min.js"></script>
-       <script src="./js/libs/zepto.min.js"></script>
 
        <script src="./js/compodoc.js"></script>
 

@@ -13,10 +13,75 @@
         <link rel="stylesheet" href="../styles/stripe.css">
     </head>
     <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
 
-        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
-            <a href="../" class="navbar-brand">ngx-cesium</a>
-            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">ngx-cesium</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
         </div>
 
         <div class="xs-menu menu" id="mobile-menu">
@@ -25,12 +90,16 @@
 
         <div class="container-fluid main">
            <div class="row main">
-               <div class="hidden-xs menu">
+               <div class="d-none d-md-block menu">
                    <compodoc-menu mode="normal"></compodoc-menu>
                </div>
                <!-- START CONTENT -->
                <div class="content directive">
                    <div class="content-data">
+
+
+
+
 
 
 
@@ -77,11 +146,11 @@ while being notified of the dragging position and drop position with an observab
 the [src: string | string] should be the image src of the dragged image.
 The style is an optional style object for the image.</p>
 <p>example:</p>
-<div><pre class="line-numbers"><code class="language-none">&lt;a href=&quot;...&quot; class=&quot;...&quot; [draggableToMap]=&quot;{src: &#39;../assets/GitHub-Mark-Light.png&#39;, style: {width: &#39;50px&#39;, height: &#39;50px&#39;}}&quot;&gt;
+<b>Example :</b><div><pre class="line-numbers"><code class="language-none">&lt;a href=&quot;...&quot; class=&quot;...&quot; [draggableToMap]=&quot;{src: &#39;../assets/GitHub-Mark-Light.png&#39;, style: {width: &#39;50px&#39;, height: &#39;50px&#39;}}&quot;&gt;
     &lt;img class=&quot;github&quot; src=&quot;../assets/GitHub-Mark-Light.png&quot;&gt;
 &lt;/a&gt;</code></pre></div><p>In order the get notified of the dragging location  and drop state subscribe to <code>DraggableToMapService.dragUpdates()</code></p>
-<div><pre class="line-numbers"><code class="language-none"> this.iconDragService.dragUpdates().subscribe(e =&gt; console.log(e));</code></pre></div><p>In order the cancel dragging use <code>DraggableToMapService.cancel()</code></p>
-<div><pre class="line-numbers"><code class="language-none"> this.iconDragService.cancel();</code></pre></div>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-none"> this.iconDragService.dragUpdates().subscribe(e =&gt; console.log(e));</code></pre></div><p>In order the cancel dragging use <code>DraggableToMapService.cancel()</code></p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-none"> this.iconDragService.cancel();</code></pre></div>
             </p>
 
 
@@ -200,7 +269,7 @@ The style is an optional style object for the image.</p>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/directives/draggable-to-map.directive.ts:33</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/directives/draggable-to-map.directive.ts:36</a></div>
                             </td>
                         </tr>
 
@@ -268,7 +337,7 @@ The style is an optional style object for the image.</p>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/directives/draggable-to-map.directive.ts:31</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/directives/draggable-to-map.directive.ts:34</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -294,8 +363,8 @@ The style is an optional style object for the image.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="54"
-                            class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/directives/draggable-to-map.directive.ts:54</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="57"
+                            class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/directives/draggable-to-map.directive.ts:57</a></div>
                 </td>
             </tr>
 
@@ -326,21 +395,21 @@ The style is an optional style object for the image.</p>
             </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="44"
-                            class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/directives/draggable-to-map.directive.ts:44</a></div>
-                </td>
-            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="47"
+                                    class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/directives/draggable-to-map.directive.ts:47</a></div>
+                        </td>
+                    </tr>
 
 
             <tr>
                 <td class="col-md-4">
 
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
-                    </div>
+                        </div>
                 </td>
             </tr>
         </tbody>
@@ -351,7 +420,7 @@ The style is an optional style object for the image.</p>
                 <td class="col-md-4">
                     <a name="onMouseDown"></a>
                     <span class="name">
-                        <span class="modifier"></span>
+                            <span class="modifier"></span>
                         <span ><b>onMouseDown</b></span>
                         <a href="#onMouseDown"><span class="icon ion-ios-link"></span></a>
                     </span>
@@ -359,7 +428,7 @@ The style is an optional style object for the image.</p>
             </tr>
             <tr>
                 <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
+                        <span class="modifier-icon icon ion-ios-reset"></span>
                     <code>onMouseDown()</code>
                 </td>
             </tr>
@@ -372,21 +441,21 @@ The style is an optional style object for the image.</p>
                 </td>
             </tr>
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="54"
-                            class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/directives/draggable-to-map.directive.ts:54</a></div>
-                </td>
-            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="57"
+                                    class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/directives/draggable-to-map.directive.ts:57</a></div>
+                        </td>
+                    </tr>
 
 
             <tr>
                 <td class="col-md-4">
 
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
-                    </div>
+                        </div>
                 </td>
             </tr>
         </tbody>
@@ -417,7 +486,7 @@ The style is an optional style object for the image.</p>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/directives/draggable-to-map.directive.ts:32</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/directives/draggable-to-map.directive.ts:35</a></div>
                         </td>
                     </tr>
 
@@ -444,7 +513,7 @@ The style is an optional style object for the image.</p>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/directives/draggable-to-map.directive.ts:33</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/directives/draggable-to-map.directive.ts:36</a></div>
                         </td>
                     </tr>
 
@@ -486,7 +555,10 @@ import { DraggableToMapService } from &#x27;../services/draggable-to-map.service
  * &#x60;&#x60;&#x60;
  */
 
-@Directive({selector: &#x27;[draggableToMap]&#x27;})
+@Directive({
+    selector: &#x27;[draggableToMap]&#x27;,
+    standalone: false
+})
 export class DraggableToMapDirective implements OnInit {
   @Input() draggableToMap: { src: string, style?: any } | string;
   private src: string;
@@ -563,6 +635,19 @@ export class DraggableToMapDirective implements OnInit {
             var MAX_SEARCH_RESULTS = 15;
        </script>
 
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>
 
@@ -574,7 +659,6 @@ export class DraggableToMapDirective implements OnInit {
        <script src="../js/libs/es6-shim.min.js"></script>
        <script src="../js/libs/EventDispatcher.js"></script>
        <script src="../js/libs/promise.min.js"></script>
-       <script src="../js/libs/zepto.min.js"></script>
 
        <script src="../js/compodoc.js"></script>
 

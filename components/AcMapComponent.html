@@ -13,10 +13,75 @@
         <link rel="stylesheet" href="../styles/stripe.css">
     </head>
     <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
 
-        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
-            <a href="../" class="navbar-brand">ngx-cesium</a>
-            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">ngx-cesium</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
         </div>
 
         <div class="xs-menu menu" id="mobile-menu">
@@ -25,12 +90,16 @@
 
         <div class="container-fluid main">
            <div class="row main">
-               <div class="hidden-xs menu">
+               <div class="d-none d-md-block menu">
                    <compodoc-menu mode="normal"></compodoc-menu>
                </div>
                <!-- START CONTENT -->
                <div class="content component">
                    <div class="content-data">
+
+
+
+
 
 
 
@@ -77,7 +146,7 @@ Every layer should be tag inside ac-map tag</p>
 <li>acMapComponent.getCesiumViewer()</li>
 <li>Use MapManagerService.getMap().getCesiumViewer() or if more then one map: MapManagerService.getMap(mapId).getCesiumViewer()</li>
 </ol>
-<div><pre class="line-numbers"><code class="language-html">&lt;ac-map&gt;
+<b>Example :</b><div><pre class="line-numbers"><code class="language-html">&lt;ac-map&gt;
     &lt;ac-map-layer-provider&gt;&lt;/ac-map-layer-provider&gt;
     &lt;dynamic-ellipse-layer #layer&gt;&lt;/dynamic-ellipse-layer&gt;
 &lt;/ac-map&gt;</code></pre></div>
@@ -146,7 +215,9 @@ Every layer should be tag inside ac-map tag</p>
 
             <tr>
                 <td class="col-md-3">template</td>
-                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;ac-default-plonter *ngIf&#x3D;&quot;!disableDefaultPlonter&quot;&gt;&lt;/ac-default-plonter&gt;
+                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">@if (!disableDefaultPlonter) {
+  &lt;ac-default-plonter&gt;&lt;/ac-default-plonter&gt;
+}
 &lt;ac-context-menu-wrapper&gt;&lt;/ac-context-menu-wrapper&gt;
 &lt;ng-content&gt;&lt;/ng-content&gt;
 </code></pre></td>
@@ -282,12 +353,12 @@ Every layer should be tag inside ac-map tag</p>
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(_cesiumService: <a href="../injectables/CesiumService.html" target="_self">CesiumService</a>, _cameraService: <a href="../injectables/CameraService.html" target="_self">CameraService</a>, _elemRef: ElementRef, document, mapsManagerService: <a href="../injectables/MapsManagerService.html" target="_self">MapsManagerService</a>, billboardDrawerService: BillboardDrawerService, labelDrawerService: LabelDrawerService, ellipseDrawerService: EllipseDrawerService, polylineDrawerService: <a href="../injectables/PolylineDrawerService.html" target="_self">PolylineDrawerService</a>, polygonDrawerService: PolygonDrawerService, arcDrawerService: ArcDrawerService, pointDrawerService: PointDrawerService, czmlDrawerService: <a href="../injectables/CzmlDrawerService.html" target="_self">CzmlDrawerService</a>, mapEventsManager: <a href="../injectables/MapEventsManagerService.html" target="_self">MapEventsManagerService</a>, keyboardControlService: <a href="../injectables/KeyboardControlService.html" target="_self">KeyboardControlService</a>, mapLayersService: <a href="../injectables/MapLayersService.html" target="_self">MapLayersService</a>, configurationService: <a href="../injectables/ConfigurationService.html" target="_self">ConfigurationService</a>, screenshotService: <a href="../injectables/ScreenshotService.html" target="_self">ScreenshotService</a>, contextMenuService: <a href="../injectables/ContextMenuService.html" target="_self">ContextMenuService</a>, coordinateConverter: <a href="../injectables/CoordinateConverter.html" target="_self">CoordinateConverter</a>)</code>
+<code>constructor(_cesiumService: <a href="../injectables/CesiumService.html" target="_self">CesiumService</a>, _cameraService: <a href="../injectables/CameraService.html" target="_self">CameraService</a>, _elemRef: ElementRef, document: unknown, mapsManagerService: <a href="../injectables/MapsManagerService.html" target="_self">MapsManagerService</a>, billboardDrawerService: BillboardDrawerService, labelDrawerService: LabelDrawerService, ellipseDrawerService: EllipseDrawerService, polylineDrawerService: <a href="../injectables/PolylineDrawerService.html" target="_self">PolylineDrawerService</a>, polygonDrawerService: PolygonDrawerService, arcDrawerService: ArcDrawerService, pointDrawerService: PointDrawerService, czmlDrawerService: <a href="../injectables/CzmlDrawerService.html" target="_self">CzmlDrawerService</a>, mapEventsManager: <a href="../injectables/MapEventsManagerService.html" target="_self">MapEventsManagerService</a>, keyboardControlService: <a href="../injectables/KeyboardControlService.html" target="_self">KeyboardControlService</a>, mapLayersService: <a href="../injectables/MapLayersService.html" target="_self">MapLayersService</a>, configurationService: <a href="../injectables/ConfigurationService.html" target="_self">ConfigurationService</a>, screenshotService: <a href="../injectables/ScreenshotService.html" target="_self">ScreenshotService</a>, contextMenuService: <a href="../injectables/ContextMenuService.html" target="_self">ContextMenuService</a>, coordinateConverter: <a href="../injectables/CoordinateConverter.html" target="_self">CoordinateConverter</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="103" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-map/ac-map.component.ts:103</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="106" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-map/ac-map.component.ts:106</a></div>
                             </td>
                         </tr>
 
@@ -344,6 +415,7 @@ Every layer should be tag inside ac-map tag</p>
                                                         <td>document</td>
                                                   
                                                         <td>
+                                                                    <code>unknown</code>
                                                         </td>
                                                   
                                                     <td>
@@ -570,7 +642,7 @@ Every layer should be tag inside ac-map tag</p>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="101" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-map/ac-map.component.ts:101</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="104" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-map/ac-map.component.ts:104</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -603,7 +675,7 @@ If not supplied - the container element will be the parent element of ac-map;</p
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="75" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-map/ac-map.component.ts:75</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="78" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-map/ac-map.component.ts:78</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -630,7 +702,7 @@ If not supplied - the container element will be the parent element of ac-map;</p
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="88" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-map/ac-map.component.ts:88</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="91" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-map/ac-map.component.ts:91</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -657,7 +729,7 @@ If not supplied - the container element will be the parent element of ac-map;</p
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="82" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-map/ac-map.component.ts:82</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="85" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-map/ac-map.component.ts:85</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -685,7 +757,7 @@ default: &#39;default-map-id-[index]&#39;</p>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="94" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-map/ac-map.component.ts:94</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="97" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-map/ac-map.component.ts:97</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -723,21 +795,21 @@ default: &#39;default-map-id-[index]&#39;</p>
             </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="204"
-                            class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-map/ac-map.component.ts:204</a></div>
-                </td>
-            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="207"
+                                    class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-map/ac-map.component.ts:207</a></div>
+                        </td>
+                    </tr>
 
 
             <tr>
                 <td class="col-md-4">
 
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="../injectables/CameraService.html" target="_self" >CameraService</a></code>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="../injectables/CameraService.html" target="_self" >CameraService</a></code>
 
-                    </div>
+                        </div>
                 </td>
             </tr>
         </tbody>
@@ -760,27 +832,25 @@ default: &#39;default-map-id-[index]&#39;</p>
             </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="192"
-                            class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-map/ac-map.component.ts:192</a></div>
-                </td>
-            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="195"
+                                    class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-map/ac-map.component.ts:195</a></div>
+                        </td>
+                    </tr>
 
 
             <tr>
                 <td class="col-md-4">
 
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="../injectables/CesiumService.html" target="_self" >CesiumService</a></code>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="../injectables/CesiumService.html" target="_self" >CesiumService</a></code>
 
-                    </div>
-                    <div class="io-description">
-                        <p>ac-map&#39;s cesium service</p>
+                        </div>
+                            <div class="io-description">
+                                <p>ac-map&#39;s cesium service</p>
 
-                    </div>
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -803,27 +873,25 @@ default: &#39;default-map-id-[index]&#39;</p>
             </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="199"
-                            class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-map/ac-map.component.ts:199</a></div>
-                </td>
-            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="202"
+                                    class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-map/ac-map.component.ts:202</a></div>
+                        </td>
+                    </tr>
 
 
             <tr>
                 <td class="col-md-4">
 
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
 
-                    </div>
-                    <div class="io-description">
-                        <p>map&#39;s cesium viewer</p>
+                        </div>
+                            <div class="io-description">
+                                <p>map&#39;s cesium viewer</p>
 
-                    </div>
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -846,21 +914,21 @@ default: &#39;default-map-id-[index]&#39;</p>
             </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="222"
-                            class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-map/ac-map.component.ts:222</a></div>
-                </td>
-            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="225"
+                                    class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-map/ac-map.component.ts:225</a></div>
+                        </td>
+                    </tr>
 
 
             <tr>
                 <td class="col-md-4">
 
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="../injectables/ContextMenuService.html" target="_self" >ContextMenuService</a></code>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="../injectables/ContextMenuService.html" target="_self" >ContextMenuService</a></code>
 
-                    </div>
+                        </div>
                 </td>
             </tr>
         </tbody>
@@ -883,21 +951,21 @@ default: &#39;default-map-id-[index]&#39;</p>
             </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="234"
-                            class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-map/ac-map.component.ts:234</a></div>
-                </td>
-            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="237"
+                                    class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-map/ac-map.component.ts:237</a></div>
+                        </td>
+                    </tr>
 
 
             <tr>
                 <td class="col-md-4">
 
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="../injectables/CoordinateConverter.html" target="_self" >CoordinateConverter</a></code>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="../injectables/CoordinateConverter.html" target="_self" >CoordinateConverter</a></code>
 
-                    </div>
+                        </div>
                 </td>
             </tr>
         </tbody>
@@ -920,21 +988,21 @@ default: &#39;default-map-id-[index]&#39;</p>
             </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="208"
-                            class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-map/ac-map.component.ts:208</a></div>
-                </td>
-            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="211"
+                                    class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-map/ac-map.component.ts:211</a></div>
+                        </td>
+                    </tr>
 
 
             <tr>
                 <td class="col-md-4">
 
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
 
-                    </div>
+                        </div>
                 </td>
             </tr>
         </tbody>
@@ -957,21 +1025,21 @@ default: &#39;default-map-id-[index]&#39;</p>
             </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="230"
-                            class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-map/ac-map.component.ts:230</a></div>
-                </td>
-            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="233"
+                                    class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-map/ac-map.component.ts:233</a></div>
+                        </td>
+                    </tr>
 
 
             <tr>
                 <td class="col-md-4">
 
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="../injectables/KeyboardControlService.html" target="_self" >KeyboardControlService</a></code>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="../injectables/KeyboardControlService.html" target="_self" >KeyboardControlService</a></code>
 
-                    </div>
+                        </div>
                 </td>
             </tr>
         </tbody>
@@ -994,21 +1062,21 @@ default: &#39;default-map-id-[index]&#39;</p>
             </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="213"
-                            class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-map/ac-map.component.ts:213</a></div>
-                </td>
-            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="216"
+                                    class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-map/ac-map.component.ts:216</a></div>
+                        </td>
+                    </tr>
 
 
             <tr>
                 <td class="col-md-4">
 
-                    <div class="io-description">
-                        <b>Returns : </b>    <code>HTMLElement</code>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>HTMLElement</code>
 
-                    </div>
+                        </div>
                 </td>
             </tr>
         </tbody>
@@ -1031,21 +1099,21 @@ default: &#39;default-map-id-[index]&#39;</p>
             </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="218"
-                            class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-map/ac-map.component.ts:218</a></div>
-                </td>
-            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="221"
+                                    class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-map/ac-map.component.ts:221</a></div>
+                        </td>
+                    </tr>
 
 
             <tr>
                 <td class="col-md-4">
 
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="../injectables/MapEventsManagerService.html" target="_self" >MapEventsManagerService</a></code>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="../injectables/MapEventsManagerService.html" target="_self" >MapEventsManagerService</a></code>
 
-                    </div>
+                        </div>
                 </td>
             </tr>
         </tbody>
@@ -1068,21 +1136,21 @@ default: &#39;default-map-id-[index]&#39;</p>
             </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="226"
-                            class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-map/ac-map.component.ts:226</a></div>
-                </td>
-            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="229"
+                                    class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-map/ac-map.component.ts:229</a></div>
+                        </td>
+                    </tr>
 
 
             <tr>
                 <td class="col-md-4">
 
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="../injectables/ScreenshotService.html" target="_self" >ScreenshotService</a></code>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="../injectables/ScreenshotService.html" target="_self" >ScreenshotService</a></code>
 
-                    </div>
+                        </div>
                 </td>
             </tr>
         </tbody>
@@ -1105,21 +1173,21 @@ default: &#39;default-map-id-[index]&#39;</p>
             </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="170"
-                            class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-map/ac-map.component.ts:170</a></div>
-                </td>
-            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="173"
+                                    class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-map/ac-map.component.ts:173</a></div>
+                        </td>
+                    </tr>
 
 
             <tr>
                 <td class="col-md-4">
 
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
-                    </div>
+                        </div>
                 </td>
             </tr>
         </tbody>
@@ -1142,53 +1210,51 @@ default: &#39;default-map-id-[index]&#39;</p>
             </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="153"
-                            class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-map/ac-map.component.ts:153</a></div>
-                </td>
-            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="156"
+                                    class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-map/ac-map.component.ts:156</a></div>
+                        </td>
+                    </tr>
 
 
             <tr>
                 <td class="col-md-4">
 
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>changes</td>
-                                    <td>
-                                            <code>SimpleChanges</code>
-                                    </td>
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>changes</td>
+                                            <td>
+                                                        <code>SimpleChanges</code>
+                                            </td>
 
-                                    <td>
-                                        No
-                                    </td>
+                                            <td>
+                                                    No
+                                            </td>
 
 
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -1211,21 +1277,21 @@ default: &#39;default-map-id-[index]&#39;</p>
             </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="184"
-                            class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-map/ac-map.component.ts:184</a></div>
-                </td>
-            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="187"
+                                    class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-map/ac-map.component.ts:187</a></div>
+                        </td>
+                    </tr>
 
 
             <tr>
                 <td class="col-md-4">
 
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
-                    </div>
+                        </div>
                 </td>
             </tr>
         </tbody>
@@ -1248,21 +1314,21 @@ default: &#39;default-map-id-[index]&#39;</p>
             </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="146"
-                            class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-map/ac-map.component.ts:146</a></div>
-                </td>
-            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="149"
+                                    class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-map/ac-map.component.ts:149</a></div>
+                        </td>
+                    </tr>
 
 
             <tr>
                 <td class="col-md-4">
 
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
-                    </div>
+                        </div>
                 </td>
             </tr>
         </tbody>
@@ -1293,7 +1359,7 @@ default: &#39;default-map-id-[index]&#39;</p>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="124" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-map/ac-map.component.ts:124</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="127" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-map/ac-map.component.ts:127</a></div>
                         </td>
                     </tr>
 
@@ -1320,7 +1386,7 @@ default: &#39;default-map-id-[index]&#39;</p>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="103" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-map/ac-map.component.ts:103</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="106" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium/components/ac-map/ac-map.component.ts:106</a></div>
                         </td>
                     </tr>
 
@@ -1333,8 +1399,7 @@ default: &#39;default-map-id-[index]&#39;</p>
 
 
     <div class="tab-pane fade  tab-source-code" id="source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { DOCUMENT } from &#x27;@angular/common&#x27;;
-import { AfterViewInit, Component, ElementRef, Inject, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { AfterViewInit, Component, ElementRef, Inject, Input, OnChanges, OnDestroy, OnInit, SimpleChanges, DOCUMENT } from &#x27;@angular/core&#x27;;
 import { CesiumService } from &#x27;../../services/cesium/cesium.service&#x27;;
 import { ConfigurationService } from &#x27;../../cesium-enhancements/ConfigurationService&#x27;;
 import { SceneMode } from &#x27;../../models/scene-mode.enum&#x27;;
@@ -1374,33 +1439,36 @@ import { ScreenshotService } from &#x27;../../services/screenshot/screenshot.ser
  * &lt;/ac-map&gt;
  */
 @Component({
-  selector: &#x27;ac-map&#x27;,
-  template: &#x60;
-    &lt;ac-default-plonter *ngIf&#x3D;&quot;!disableDefaultPlonter&quot;&gt;&lt;/ac-default-plonter&gt;
+    selector: &#x27;ac-map&#x27;,
+    template: &#x60;
+    @if (!disableDefaultPlonter) {
+      &lt;ac-default-plonter&gt;&lt;/ac-default-plonter&gt;
+    }
     &lt;ac-context-menu-wrapper&gt;&lt;/ac-context-menu-wrapper&gt;
     &lt;ng-content&gt;&lt;/ng-content&gt;
-  &#x60;,
-  providers: [
-    CesiumService,
-    BillboardDrawerService,
-    CesiumEventBuilder,
-    KeyboardControlService,
-    MapEventsManagerService,
-    PlonterService,
-    LabelDrawerService,
-    PolylineDrawerService,
-    PolylinePrimitiveDrawerService,
-    EllipseDrawerService,
-    PointDrawerService,
-    ArcDrawerService,
-    CzmlDrawerService,
-    PolygonDrawerService,
-    MapLayersService,
-    CameraService,
-    ScreenshotService,
-    ContextMenuService,
-    CoordinateConverter,
-  ],
+    &#x60;,
+    providers: [
+        CesiumService,
+        BillboardDrawerService,
+        CesiumEventBuilder,
+        KeyboardControlService,
+        MapEventsManagerService,
+        PlonterService,
+        LabelDrawerService,
+        PolylineDrawerService,
+        PolylinePrimitiveDrawerService,
+        EllipseDrawerService,
+        PointDrawerService,
+        ArcDrawerService,
+        CzmlDrawerService,
+        PolygonDrawerService,
+        MapLayersService,
+        CameraService,
+        ScreenshotService,
+        ContextMenuService,
+        CoordinateConverter,
+    ],
+    standalone: false
 })
 export class AcMapComponent implements OnChanges, OnInit, AfterViewInit, OnDestroy {
   /**
@@ -1596,11 +1664,11 @@ export class AcMapComponent implements OnChanges, OnInit, AfterViewInit, OnDestr
     
 </div>
 
-<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/vis-network.min.js"></script>
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><ac-default-plonter *ngIf="!disableDefaultPlonter"></ac-default-plonter><ac-context-menu-wrapper></ac-context-menu-wrapper><ng-content></ng-content></div>'
+        var COMPONENT_TEMPLATE = '<div>@if (!disableDefaultPlonter) {  <ac-default-plonter></ac-default-plonter>}<ac-context-menu-wrapper></ac-context-menu-wrapper><ng-content></ng-content></div>'
     var COMPONENTS = [{'name': 'AcArcComponent', 'selector': 'ac-arc'},{'name': 'AcArcDescComponent', 'selector': 'ac-arc-desc'},{'name': 'AcArrayDescComponent', 'selector': 'ac-array-desc'},{'name': 'AcBillboardComponent', 'selector': 'ac-billboard'},{'name': 'AcBillboardDescComponent', 'selector': 'ac-billboard-desc'},{'name': 'AcBillboardPrimitiveDescComponent', 'selector': 'ac-billboard-primitive-desc'},{'name': 'AcBoxDescComponent', 'selector': 'ac-box-desc'},{'name': 'AcCircleComponent', 'selector': 'ac-circle'},{'name': 'AcCircleDescComponent', 'selector': 'ac-circle-desc'},{'name': 'AcContextMenuWrapperComponent', 'selector': 'ac-context-menu-wrapper'},{'name': 'AcCorridorDescComponent', 'selector': 'ac-corridor-desc'},{'name': 'AcCylinderDescComponent', 'selector': 'ac-cylinder-desc'},{'name': 'AcCzmlDescComponent', 'selector': 'ac-czml-desc'},{'name': 'AcDefaultPlonterComponent', 'selector': 'ac-default-plonter'},{'name': 'AcDynamicCircleDescComponent', 'selector': 'ac-dynamic-circle-desc'},{'name': 'AcDynamicEllipseDescComponent', 'selector': 'ac-dynamic-ellipse-desc'},{'name': 'AcDynamicPolylineDescComponent', 'selector': 'ac-dynamic-polyline-desc'},{'name': 'AcEllipseComponent', 'selector': 'ac-ellipse'},{'name': 'AcEllipseDescComponent', 'selector': 'ac-ellipse-desc'},{'name': 'AcEllipsoidDescComponent', 'selector': 'ac-ellipsoid-desc'},{'name': 'AcHtmlComponent', 'selector': 'ac-html'},{'name': 'AcHtmlDescComponent', 'selector': 'ac-html-desc'},{'name': 'AcLabelComponent', 'selector': 'ac-label'},{'name': 'AcLabelDescComponent', 'selector': 'ac-label-desc'},{'name': 'AcLabelPrimitiveDescComponent', 'selector': 'ac-label-primitive-desc'},{'name': 'AcLayerComponent', 'selector': 'ac-layer'},{'name': 'AcMapComponent', 'selector': 'ac-map'},{'name': 'AcMapLayerProviderComponent', 'selector': 'ac-map-layer-provider'},{'name': 'AcMapTerrainProviderComponent', 'selector': 'ac-map-terrain-provider'},{'name': 'AcModelDescComponent', 'selector': 'ac-model-desc'},{'name': 'AcPointComponent', 'selector': 'ac-point'},{'name': 'AcPointDescComponent', 'selector': 'ac-point-desc'},{'name': 'AcPointPrimitiveDescComponent', 'selector': 'ac-point-primitive-desc'},{'name': 'AcPolygonComponent', 'selector': 'ac-polygon'},{'name': 'AcPolygonDescComponent', 'selector': 'ac-polygon-desc'},{'name': 'AcPolylineComponent', 'selector': 'ac-polyline'},{'name': 'AcPolylineDescComponent', 'selector': 'ac-polyline-desc'},{'name': 'AcPolylinePrimitiveDescComponent', 'selector': 'ac-polyline-primitive-desc'},{'name': 'AcPolylineVolumeDescComponent', 'selector': 'ac-polyline-volume-desc'},{'name': 'AcPrimitivePolylineComponent', 'selector': 'ac-primitive-polyline'},{'name': 'AcRectangleComponent', 'selector': 'ac-rectangle'},{'name': 'AcRectangleDescComponent', 'selector': 'ac-rectangle-desc'},{'name': 'AcStaticCircleDescComponent', 'selector': 'ac-static-circle'},{'name': 'AcStaticEllipseDescComponent', 'selector': 'ac-static-ellipse-desc'},{'name': 'AcStaticPolygonDescComponent', 'selector': 'ac-static-polygon-desc'},{'name': 'AcStaticPolylineDescComponent', 'selector': 'ac-static-polyline-desc'},{'name': 'AcTileset3dComponent', 'selector': 'ac-3d-tile-layer'},{'name': 'AcToolbarButtonComponent', 'selector': 'ac-toolbar-button'},{'name': 'AcToolbarComponent', 'selector': 'ac-toolbar'},{'name': 'AcWallDescComponent', 'selector': 'ac-wall-desc'},{'name': 'CirclesEditorComponent', 'selector': 'circles-editor'},{'name': 'DragIconComponent', 'selector': 'ac-drag-icon'},{'name': 'EllipsesEditorComponent', 'selector': 'ellipses-editor'},{'name': 'HippodromeEditorComponent', 'selector': 'hippodrome-editor'},{'name': 'PointsEditorComponent', 'selector': 'points-editor'},{'name': 'PolygonsEditorComponent', 'selector': 'polygons-editor'},{'name': 'PolylinesEditorComponent', 'selector': 'polylines-editor'},{'name': 'RangeAndBearingComponent', 'selector': 'range-and-bearing'},{'name': 'RectanglesEditorComponent', 'selector': 'rectangles-editor'}];
     var DIRECTIVES = [{'name': 'AcHtmlContainerDirective', 'selector': '[acHtmlContainer]'},{'name': 'AcHtmlDirective', 'selector': '[acHtml]'},{'name': 'DraggableToMapDirective', 'selector': '[draggableToMap]'},{'name': 'EntityOnMapComponent', 'selector': ''}];
     var ACTUAL_COMPONENT = {'name': 'AcMapComponent'};
@@ -1653,6 +1721,19 @@ export class AcMapComponent implements OnChanges, OnInit, AfterViewInit, OnDestr
             var MAX_SEARCH_RESULTS = 15;
        </script>
 
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>
 
@@ -1664,7 +1745,6 @@ export class AcMapComponent implements OnChanges, OnInit, AfterViewInit, OnDestr
        <script src="../js/libs/es6-shim.min.js"></script>
        <script src="../js/libs/EventDispatcher.js"></script>
        <script src="../js/libs/promise.min.js"></script>
-       <script src="../js/libs/zepto.min.js"></script>
 
        <script src="../js/compodoc.js"></script>
 

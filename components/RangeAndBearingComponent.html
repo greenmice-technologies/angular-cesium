@@ -13,10 +13,75 @@
         <link rel="stylesheet" href="../styles/stripe.css">
     </head>
     <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
 
-        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
-            <a href="../" class="navbar-brand">ngx-cesium</a>
-            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+          <script>
+              // --- Iframe navigation tracking for Template Playground ---
+              function sendCurrentUrlToParent() {
+                  if (window.parent && window.parent !== window) {
+                      window.parent.postMessage({
+                          type: 'compodoc-iframe-navigate',
+                          url: window.location.pathname + window.location.hash
+                      }, '*');
+                  }
+              }
+              window.addEventListener('hashchange', sendCurrentUrlToParent, false);
+              window.addEventListener('popstate', sendCurrentUrlToParent, false);
+              window.addEventListener('DOMContentLoaded', sendCurrentUrlToParent, false);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">ngx-cesium</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
         </div>
 
         <div class="xs-menu menu" id="mobile-menu">
@@ -25,12 +90,16 @@
 
         <div class="container-fluid main">
            <div class="row main">
-               <div class="hidden-xs menu">
+               <div class="d-none d-md-block menu">
                    <compodoc-menu mode="normal"></compodoc-menu>
                </div>
                <!-- START CONTENT -->
                <div class="content component">
                    <div class="content-data">
+
+
+
+
 
 
 
@@ -77,10 +146,10 @@ The function receives an optional RangeAndBearingOptions object that defines the
 (on top of the default and global definitions).</p>
 <p>Usage:</p>
 <p>my-component.ts:</p>
-<div><pre class="line-numbers"><code class="language-none">\&#64;ViewChild(&#39;rangeAndBearing&#39;, {static: false}) private rangeAndBearing: RangeAndBearingComponent; // Get R&amp;B reference
+<b>Example :</b><div><pre class="line-numbers"><code class="language-none">\&#64;ViewChild(&#39;rangeAndBearing&#39;, {static: false}) private rangeAndBearing: RangeAndBearingComponent; // Get R&amp;B reference
  // ...
 this.rangeAndBearing.create({style: { pointProps: { pixelSize: 12 } }, bearingLabelsStyle: { fillColor: Cesium.Color.GREEN } });</code></pre></div><p>my-component.html</p>
-<div><pre class="line-numbers"><code class="language-none">&lt;range-and-bearing #rangeAndBearing&gt;&lt;/range-and-bearing&gt; // Optional inputs defines global style and behavior.</code></pre></div>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-none">&lt;range-and-bearing #rangeAndBearing&gt;&lt;/range-and-bearing&gt; // Optional inputs defines global style and behavior.</code></pre></div>
     </p>
 
 
@@ -210,7 +279,7 @@ this.rangeAndBearing.create({style: { pointProps: { pixelSize: 12 } }, bearingLa
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/components/range-and-bearing/range-and-bearing.component.ts:50</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/components/range-and-bearing/range-and-bearing.component.ts:51</a></div>
                             </td>
                         </tr>
 
@@ -283,7 +352,7 @@ this.rangeAndBearing.create({style: { pointProps: { pixelSize: 12 } }, bearingLa
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/components/range-and-bearing/range-and-bearing.component.ts:47</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/components/range-and-bearing/range-and-bearing.component.ts:48</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -304,7 +373,7 @@ this.rangeAndBearing.create({style: { pointProps: { pixelSize: 12 } }, bearingLa
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/components/range-and-bearing/range-and-bearing.component.ts:48</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/components/range-and-bearing/range-and-bearing.component.ts:49</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -330,7 +399,7 @@ this.rangeAndBearing.create({style: { pointProps: { pixelSize: 12 } }, bearingLa
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/components/range-and-bearing/range-and-bearing.component.ts:46</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/components/range-and-bearing/range-and-bearing.component.ts:47</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -351,7 +420,7 @@ this.rangeAndBearing.create({style: { pointProps: { pixelSize: 12 } }, bearingLa
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/components/range-and-bearing/range-and-bearing.component.ts:49</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/components/range-and-bearing/range-and-bearing.component.ts:50</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -372,7 +441,7 @@ this.rangeAndBearing.create({style: { pointProps: { pixelSize: 12 } }, bearingLa
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/components/range-and-bearing/range-and-bearing.component.ts:50</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/components/range-and-bearing/range-and-bearing.component.ts:51</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -398,7 +467,7 @@ this.rangeAndBearing.create({style: { pointProps: { pixelSize: 12 } }, bearingLa
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/components/range-and-bearing/range-and-bearing.component.ts:45</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/components/range-and-bearing/range-and-bearing.component.ts:46</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -424,7 +493,7 @@ this.rangeAndBearing.create({style: { pointProps: { pixelSize: 12 } }, bearingLa
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/components/range-and-bearing/range-and-bearing.component.ts:44</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/components/range-and-bearing/range-and-bearing.component.ts:45</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -456,56 +525,54 @@ this.rangeAndBearing.create({style: { pointProps: { pixelSize: 12 } }, bearingLa
             </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="55"
-                            class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/components/range-and-bearing/range-and-bearing.component.ts:55</a></div>
-                </td>
-            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="56"
+                                    class="link-to-prism">projects/angular-cesium/src/lib/angular-cesium-widgets/components/range-and-bearing/range-and-bearing.component.ts:56</a></div>
+                        </td>
+                    </tr>
 
 
             <tr>
                 <td class="col-md-4">
 
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                    <td>Default value</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                                <code><a href="../interfaces/RangeAndBearingOptions.html" target="_self" >RangeAndBearingOptions</a></code>
-                                    </td>
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Default value</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                            <code><a href="../interfaces/RangeAndBearingOptions.html" target="_self" >RangeAndBearingOptions</a></code>
+                                            </td>
 
-                                    <td>
-                                        No
-                                    </td>
+                                            <td>
+                                                    No
+                                            </td>
 
-                                    <td>
-                                        <code>{lineEditOptions: {}, labelsStyle: {}, distanceLabelsStyle: {}, bearingLabelsStyle: {}}</code>
-                                    </td>
+                                            <td>
+                                                    <code>{lineEditOptions: {}, labelsStyle: {}, distanceLabelsStyle: {}, bearingLabelsStyle: {}}</code>
+                                            </td>
 
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="../classes/PolylineEditorObservable.html" target="_self" >PolylineEditorObservable</a></code>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="../classes/PolylineEditorObservable.html" target="_self" >PolylineEditorObservable</a></code>
 
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -551,12 +618,13 @@ import { PolylinesEditorService } from &#x27;../../services/entity-editors/polyl
  *
  */
 @Component({
-  selector: &#x27;range-and-bearing&#x27;,
-  template: &#x60;
+    selector: &#x27;range-and-bearing&#x27;,
+    template: &#x60;
     &lt;polylines-editor&gt;&lt;/polylines-editor&gt;
   &#x60;,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [PolylinesEditorService],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [PolylinesEditorService],
+    standalone: false
 })
 export class RangeAndBearingComponent {
   @Input() lineEditOptions?: PolylineEditOptions &#x3D; {};
@@ -719,7 +787,7 @@ export interface RangeAndBearingOptions {
     
 </div>
 
-<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/vis-network.min.js"></script>
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
@@ -776,6 +844,19 @@ export interface RangeAndBearingOptions {
             var MAX_SEARCH_RESULTS = 15;
        </script>
 
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>
 
@@ -787,7 +868,6 @@ export interface RangeAndBearingOptions {
        <script src="../js/libs/es6-shim.min.js"></script>
        <script src="../js/libs/EventDispatcher.js"></script>
        <script src="../js/libs/promise.min.js"></script>
-       <script src="../js/libs/zepto.min.js"></script>
 
        <script src="../js/compodoc.js"></script>
 
